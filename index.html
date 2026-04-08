@@ -4,8 +4,10 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Carmenza — Asistente IA para el Cuidado del Adulto Mayor</title>
-  <meta name="description" content="Carmenza coordina el cuidado del adulto mayor a través de WhatsApp con inteligencia artificial. Recordatorios, nutrición, cronogramas y más. Prueba gratis 30 días."/>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💙</text></svg>"/>
+  <meta name="description" content="Carmenza ayuda a prevenir crisis del adulto mayor antes de que ocurran. Tranquilidad para él, descanso para ti. Recordatorios, signos vitales y alertas tempranas por WhatsApp. Prueba gratis 30 días."/>
+  <link rel="icon" href="/favicon.ico" sizes="any"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/logo-32.png"/>
+  <link rel="apple-touch-icon" href="/assets/img/logo-180.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
@@ -283,6 +285,31 @@ section { padding: 80px 0; }
 
 @media (max-width: 768px) { .plans-grid { grid-template-columns: 1fr; } }
 
+/* ── Promise banner ──────────────────── */
+.promise {
+  background: linear-gradient(135deg, var(--purple), var(--blue));
+  color: white; text-align: center;
+  padding: 72px 0;
+}
+.promise h2 {
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0 0 18px;
+  letter-spacing: -0.01em;
+}
+.promise p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(255,255,255,.92);
+  max-width: 640px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  .promise { padding: 56px 0; }
+  .promise p { font-size: 16px; }
+}
+
 /* ── Guarantee ───────────────────────── */
 .guarantee {
   background: linear-gradient(135deg, var(--purple), var(--blue));
@@ -338,7 +365,8 @@ footer .footer-links a:hover { color: var(--purple); }
 <nav>
   <div class="container">
     <a href="#" class="nav-brand">
-      <span>💙</span> Carmenza
+      <img src="/assets/img/logo-64.png" alt="Carmenza" style="width:36px;height:36px;border-radius:50%"/>
+      Carmenza
     </a>
     <ul class="nav-links">
       <li><a href="#problema">El problema</a></li>
@@ -364,7 +392,7 @@ footer .footer-links a:hover { color: var(--purple); }
     <!-- WhatsApp mockup -->
     <div class="hero-mockup">
       <div class="mock-header">
-        <div class="mock-avatar">C</div>
+        <div class="mock-avatar" style="padding:0;overflow:hidden"><img src="/assets/img/logo-64.png" style="width:100%;height:100%" alt="C"/></div>
         <div>
           <div class="mock-name">Carmenza</div>
           <div class="mock-sub">Asistente de cuidado</div>
@@ -419,6 +447,14 @@ footer .footer-links a:hover { color: var(--purple); }
         <p>El 40-70% de los cuidadores familiares desarrolla burnout. Sin herramientas de apoyo, la carga emocional se vuelve insostenible.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ── Promise banner ─────────────────────────────────── -->
+<section class="promise">
+  <div class="container">
+    <h2>Carmenza ayuda a prevenir crisis<br/>del adulto mayor antes de que ocurran</h2>
+    <p>Tranquilidad para él, descanso para ti.<br/>Recordatorios, signos vitales y alertas tempranas — todo por WhatsApp.</p>
   </div>
 </section>
 
