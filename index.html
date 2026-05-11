@@ -347,6 +347,92 @@ section { padding: 80px 0; }
 .cta-email { background: var(--warm-bg2); color: var(--text); }
 .cta-email:hover { background: var(--border); }
 
+/* ── Formulario de contacto ── */
+.contact-form {
+  margin: 32px auto 0;
+  max-width: 560px;
+  text-align: left;
+  background: var(--warm-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px 28px 28px;
+}
+.contact-form h3 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+.form-subtitle { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; }
+.form-row { display: flex; flex-direction: column; margin-bottom: 14px; }
+.form-row label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.form-row input,
+.form-row select,
+.form-row textarea {
+  width: 100%;
+  font: inherit;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--text);
+  box-sizing: border-box;
+}
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus {
+  outline: 2px solid var(--purple);
+  outline-offset: 1px;
+  border-color: var(--purple);
+}
+.form-row textarea { resize: vertical; min-height: 80px; }
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.form-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 14px 0 18px;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.form-consent input {
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+.form-consent a { color: var(--purple); text-decoration: underline; }
+.form-submit {
+  width: 100%;
+  padding: 14px;
+  background: var(--purple);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.form-submit:hover:not(:disabled) { background: #6a4dc4; }
+.form-submit:disabled { opacity: 0.7; cursor: not-allowed; }
+.form-feedback {
+  margin-top: 14px;
+  font-size: 14px;
+  text-align: center;
+  min-height: 20px;
+}
+.form-feedback.is-error { color: #c0392b; }
+.form-feedback.is-success { color: #1b7a3e; }
+
+@media (max-width: 540px) {
+  .form-grid { grid-template-columns: 1fr; gap: 0; }
+  .contact-form { padding: 20px 18px 22px; }
+}
+
 /* ── Footer ──────────────────────────── */
 footer {
   padding: 40px 0; text-align: center;
@@ -609,18 +695,148 @@ footer .footer-links a:hover { color: var(--purple); }
   <div class="container">
     <div class="cta-box">
       <h2>¿Lista para cuidar mejor?</h2>
-      <p>Escríbenos y te ayudamos a configurar Carmenza para tu familia o institución en menos de 10 minutos.</p>
+      <p>Escríbenos por WhatsApp y conversamos en menos de 10 minutos, o déjanos tus datos y te contactamos.</p>
+
       <div class="cta-channels">
-        <a href="https://wa.me/573239747449?text=Hola%2C%20quiero%20conocer%20más%20sobre%20Carmenza" class="cta-wa" target="_blank">
-          💬 WhatsApp
+        <a href="https://wa.me/573239747449?text=Hola%20Carmenza%2C%20vengo%20de%20la%20web%20%5B%23carmenza-web%5D" class="cta-wa" target="_blank" rel="noopener">
+          💬 Hablar por WhatsApp
         </a>
-        <a href="mailto:hola@kairalabs.ai" class="cta-email">
-          ✉️ hola@kairalabs.ai
+        <a href="#form-contacto" class="cta-email">
+          📝 Prefiero que me contacten
         </a>
       </div>
+
+      <!-- Formulario de contacto -->
+      <form id="form-contacto" class="contact-form" novalidate>
+        <h3>Déjanos tus datos</h3>
+        <p class="form-subtitle">Te contactaremos en el siguiente día hábil.</p>
+
+        <div class="form-row">
+          <label for="lead-nombre">Nombre completo *</label>
+          <input type="text" id="lead-nombre" name="nombre" required minlength="2" maxlength="120" autocomplete="name">
+        </div>
+
+        <div class="form-grid">
+          <div class="form-row">
+            <label for="lead-email">Correo electrónico</label>
+            <input type="email" id="lead-email" name="email" maxlength="120" autocomplete="email">
+          </div>
+          <div class="form-row">
+            <label for="lead-telefono">Teléfono / WhatsApp</label>
+            <input type="tel" id="lead-telefono" name="telefono" maxlength="30" autocomplete="tel" placeholder="+57 300 1234567">
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-row">
+            <label for="lead-ciudad">Ciudad</label>
+            <input type="text" id="lead-ciudad" name="ciudad" maxlength="80" autocomplete="address-level2">
+          </div>
+          <div class="form-row">
+            <label for="lead-tipo">Tipo de interés</label>
+            <select id="lead-tipo" name="tipo">
+              <option value="">Selecciona…</option>
+              <option value="familia">Familia (cuido a un adulto mayor)</option>
+              <option value="institucional">Institución (hogar geriátrico, IPS, centro día)</option>
+              <option value="profesional_aliado">Profesional aliado (médico, neuropsicólogo)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="lead-mensaje">Cuéntanos brevemente (opcional)</label>
+          <textarea id="lead-mensaje" name="mensaje_libre" rows="3" maxlength="2000" placeholder="Algo que nos quieras contar sobre tu situación o lo que estás buscando…"></textarea>
+        </div>
+
+        <div class="form-consent">
+          <input type="checkbox" id="lead-consent" name="consent_contact" required>
+          <label for="lead-consent">
+            Autorizo a <strong>Kaira Labs SAS</strong> a contactarme por WhatsApp y/o correo electrónico para responder a esta solicitud, conforme a la
+            <a href="https://kairalabs.ai/privacidad.html" target="_blank" rel="noopener">Política de Tratamiento de Datos Personales</a>.
+            *
+          </label>
+        </div>
+
+        <button type="submit" class="form-submit">Enviar</button>
+
+        <div class="form-feedback" role="status" aria-live="polite"></div>
+      </form>
     </div>
   </div>
 </section>
+
+<script>
+  (function () {
+    const form = document.getElementById('form-contacto');
+    if (!form) return;
+    const feedback = form.querySelector('.form-feedback');
+    const submitBtn = form.querySelector('.form-submit');
+    const API_ORIGIN = 'https://api.carmenza.co';
+
+    function setFeedback(msg, kind) {
+      feedback.textContent = msg || '';
+      feedback.className = 'form-feedback' + (kind ? ' is-' + kind : '');
+    }
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      setFeedback('', '');
+
+      const data = {
+        nombre: form.nombre.value.trim(),
+        email: form.email.value.trim() || null,
+        telefono: form.telefono.value.trim() || null,
+        ciudad: form.ciudad.value.trim() || null,
+        tipo: form.tipo.value || null,
+        mensaje_libre: form.mensaje_libre.value.trim() || null,
+        consent_contact: form.consent_contact.checked,
+        landing_version: 'carmenza-2026-05',
+      };
+
+      // Pull UTM params from URL if present
+      const params = new URLSearchParams(window.location.search);
+      ['utm_source', 'utm_medium', 'utm_campaign'].forEach(k => {
+        const v = params.get(k);
+        if (v) data[k] = v;
+      });
+
+      if (!data.consent_contact) {
+        setFeedback('Por favor autoriza el contacto para poder responderte.', 'error');
+        return;
+      }
+      if (!data.email && !data.telefono) {
+        setFeedback('Necesitamos al menos un medio de contacto (correo o teléfono).', 'error');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando…';
+
+      try {
+        const res = await fetch(API_ORIGIN + '/api/leads/capture', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        const body = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          setFeedback(body.detail || 'No pudimos enviar tu solicitud. Intenta de nuevo.', 'error');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Enviar';
+          return;
+        }
+        form.reset();
+        setFeedback('¡Gracias! Recibimos tu solicitud y te contactaremos pronto.', 'success');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Enviado ✓';
+      } catch (err) {
+        setFeedback('Hubo un problema de conexión. Vuelve a intentar en un momento.', 'error');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enviar';
+      }
+    });
+  })();
+</script>
 
 <!-- ── Footer ────────────────────────────────────────── -->
 <footer>
